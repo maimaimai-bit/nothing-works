@@ -3,13 +3,13 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Nothing Works</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital@1&display=swap');
       @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital@1&family=Lato:wght@300;400&display=swap');
       
       .animate__animated.animate__fadeOut {
-        --animate-duration: 2s;
+        --animate-duration: 3.5s;
       }
       
       .container {
@@ -26,15 +26,16 @@
       }
       
       .lyric {
-        font-family: 'Alegreya';	/* can change */
+        font-family: "Alegreya";	/* can change */
         font-size: 17px;
         text-align: center;
+        color: #fff;
       }
       
       #nw-input {
         margin-top: -10px;
         margin-bottom: 45px;
-        font-family: 'Lato';
+        font-family: "Lato";
         padding: 2px 4px;
         text-transform: uppercase;
       }
@@ -51,22 +52,38 @@
     <div id="main" class="container" style="background-color: #fff">
       <div class="center">
 				<p id="nw-lyric" class="lyric" style="color: #000">nothing works</p>
+        <p class="lyric" style="display: none;">nothing works for everyone</p>
+        <p class="lyric" style="display: none;">good stories are bad lives</p>
+        <p class="lyric" style="display: none;">good stories are bad liveeeessss</p>
 				<input type="text" id="nw-input" size="16" autocomplete="on" display="block">
       </div>
     </div>	
 	</body>
   
   <script>
+    // make the lyrics all in the center
+    // make the fadeout shorter at the end -> use timeout in fadeOut function for the animate classes?, or edit animate keyframes
+    // add blank lyrics lines for silence preiods
+    
   	let main = document.getElementById("main")
     let nwInput = document.getElementById("nw-input")
     let nwLyric = document.getElementById("nw-lyric")
+    let lyrics = document.getElementsByClassName("lyric")
+    
+    function fadeOut(lyric) {
+      lyric.style.display = "block"
+      lyric.classList.add("animate__animated")
+      lyric.classList.add("animate__fadeOut")
+    }
     
     function nothingWorks() {
       main.style.backgroundColor = "#000"
       nwLyric.style.color = "#fff"
       nwInput.style.display = "none"
-      nwLyric.classList.add("animate__animated");
-      nwLyric.classList.add("animate__fadeOut");
+      fadeOut(nwLyric)
+      for (let i = 1; i < lyrics.length; i++) {
+        setTimeout(fadeOut, i * 3500, lyrics.item(i))
+      }
     }
     
     window.addEventListener("keypress", function(event) {
