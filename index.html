@@ -3,8 +3,15 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Nothing Works</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital@1&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital@1&family=Lato:wght@300;400&display=swap');
+      
+      .animate__animated.animate__fadeOut {
+        --animate-duration: 2s;
+      }
+      
       .container {
         position: absolute;
         top: 0;
@@ -21,28 +28,52 @@
       .lyric {
         font-family: 'Alegreya';	/* can change */
         font-size: 17px;
+        text-align: center;
       }
       
       #nw-input {
-        margin-bottom: 40px;
+        margin-top: -10px;
+        margin-bottom: 45px;
+        font-family: 'Lato';
+        padding: 2px 4px;
+        text-transform: uppercase;
+      }
+      
+      #nw-input:focus {
+        outline: none !important;
+        border-radius: 3px;
+        border: 1.5px solid #dedede; /* can be other colors */
       }
     </style>
 	</head>
   
 	<body>
-    <div id='main' class='container' style='background-color: #fff'>
-      <div class='center'>
-      	<p class='lyric'>nothing works</p>
-      	<input type='text' id='nw-input' size='12' autocomplete='off'>
+    <div id="main" class="container" style="background-color: #fff">
+      <div class="center">
+				<p id="nw-lyric" class="lyric" style="color: #000">nothing works</p>
+				<input type="text" id="nw-input" size="16" autocomplete="on" display="block">
       </div>
     </div>	
 	</body>
   
   <script>
-  	let main = document.getElementById('main')
+  	let main = document.getElementById("main")
+    let nwInput = document.getElementById("nw-input")
+    let nwLyric = document.getElementById("nw-lyric")
+    
     function nothingWorks() {
-      main.style.backgroundColor = '#000'
+      main.style.backgroundColor = "#000"
+      nwLyric.style.color = "#fff"
+      nwInput.style.display = "none"
+      nwLyric.classList.add("animate__animated");
+      nwLyric.classList.add("animate__fadeOut");
     }
+    
+    window.addEventListener("keypress", function(event) {
+      if (event.keyCode === 13 && nwInput.value.toLowerCase() === "nothing works") {
+        nothingWorks()
+      }
+    })
     
   </script>
 </html>
