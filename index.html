@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8">
+		<title>Nothing Works</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital@1&display=swap');
+      .container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: grid;
+      }
+      
+      .center {
+        margin: auto;
+      }
+      
+      .lyric {
+        font-family: 'Alegreya';	/* can change */
+        font-size: 17px;
+      }
+      
+      #nw-input {
+        margin-bottom: 40px;
+      }
+    </style>
+	</head>
+  
+	<body>
+    <div id='main' class='container' style='background-color: #fff'>
+      <div class='center'>
+      	<p class='lyric'>nothing works</p>
+      	<input type='text' id='nw-input' size='12' autocomplete='off'>
+      </div>
+    </div>	
+	</body>
+  
+  <script>
+  	let main = document.getElementById('main')
+    function nothingWorks() {
+      main.style.backgroundColor = '#000'
+    }
+    
+  </script>
+</html>
