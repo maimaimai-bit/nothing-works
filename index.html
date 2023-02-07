@@ -129,31 +129,33 @@
     let vx = 1
     let vy = 1
     
-    function animateMan(man, leftScrn, rightScrn) {
-      requestAnimationFrame(animateMan(man, leftScrn, rightScrn))
+    function animateMan1() {
+      requestAnimationFrame(animateMan1)
       
       let topScrn = 0
       let bottomScrn = window.innerHeight = 80
       
-      if (man.style.left < leftScrn || man.style.left > rightScrn) {
+      if (man1.style.left < 0 || man.style.left > window.InnerWidth / 2 - 60) {
         vx = -vx
       }
       
-      if (man.style.top < topScrn || man.style.left > bottomScrn) {
+      if (man1.style.top < topScrn || man.style.left > bottomScrn) {
         vx = -vx
       }
       
-      man.style.left += vx
-      man.style.top += vy
+      man1.style.left += vx
+      man1.style.top += vy
     }
     
-    animateMan(man1, 0, window.InnerWidth / 2 - 60)
+    animateMan1()
     
     window.addEventListener("keypress", function(event) {
       if (event.keyCode === 13 && nwInput.value.toLowerCase() === "nothing works") {
         nothingWorks()
       }
     })
+    
+    // also for resize
     
   </script>
 </html>
