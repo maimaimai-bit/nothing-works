@@ -133,13 +133,13 @@
       requestAnimationFrame(animateMan1)
       
       let topScrn = 0
-      let bottomScrn = window.innerHeight = 80
+      let bottomScrn = window.innerHeight - 80
       
-      if (man1.style.left < 0 || man.style.left > window.InnerWidth / 2 - 60) {
+      if (man1.style.left < 0 || man1.style.left > window.InnerWidth / 2 - 60) {
         vx = -vx
       }
       
-      if (man1.style.top < topScrn || man.style.left > bottomScrn) {
+      if (man1.style.top < topScrn || man1.style.top > bottomScrn) {
         vx = -vx
       }
       
