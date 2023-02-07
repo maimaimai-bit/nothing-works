@@ -9,7 +9,7 @@
       @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital@1&family=Lato:wght@300;400&display=swap');
       
       .animate__animated.animate__fadeOut {
-        --animate-duration: 4s;
+        --animate-duration: 3.9s;
       }
       
       .container {
@@ -94,7 +94,7 @@
       lyric.style.display = "block"
       lyric.classList.add("animate__animated")
       lyric.classList.add("animate__fadeOut")
-      setTimeout(function() {lyric.style.display = "none"}, 4000)
+      setTimeout(function() {lyric.style.display = "none"}, 3900)
     }
     
     function nothingWorks() {
@@ -103,7 +103,7 @@
       nwInput.style.display = "none"
       fadeOut(nwLyric)
       for (let i = 1; i < lyrics.length; i++) {
-        setTimeout(fadeOut, i * 3900, lyrics.item(i))
+        setTimeout(fadeOut, i * 4000, lyrics.item(i))
       }
     }
     
