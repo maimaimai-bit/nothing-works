@@ -129,22 +129,31 @@
     let vx = 1
     let vy = 1
     
+    let x = 0
+    let y = 0
+    
     function animateMan1() {
-      requestAnimationFrame(animateMan1)
+      requestAnimationFrame(animateMan1) 
       
       let topScrn = 0
       let bottomScrn = window.innerHeight - 80
       
-      if (man1.style.left < 0 || man1.style.left > window.InnerWidth / 2 - 60) {
+      let leftScrn = 0
+      let rightScrn = window.innerWidth / 2 - 60
+      
+      if (x < leftScrn || x > rightScrn) {
         vx = -vx
       }
       
-      if (man1.style.top < topScrn || man1.style.top > bottomScrn) {
-        vx = -vx
-      }
+      if (y < topScrn || y > bottomScrn) { 
+        vy = -vy
+      } 
       
-      man1.style.left += vx
-      man1.style.top += vy
+      x += vx
+      y += vy
+      
+      man1.style.left = x + "px"
+      man1.style.top = y + "px"
     }
     
     animateMan1()
@@ -159,3 +168,4 @@
     
   </script>
 </html>
+s
