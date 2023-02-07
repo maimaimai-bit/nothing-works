@@ -9,7 +9,7 @@
       @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital@1&family=Lato:wght@300;400&display=swap');
       
       .animate__animated.animate__fadeOut {
-        --animate-duration: 3.5s;
+        --animate-duration: 4s;
       }
       
       .container {
@@ -45,6 +45,19 @@
         border-radius: 3px;
         border: 1.5px solid #dedede; /* can be other colors */
       }
+      
+      .chorus {
+        animation: .1s shake 39 alternate;
+      }
+
+      @keyframes shake {
+        0% { transform: skewX(-25deg); }
+        5% { transform: skewX(25deg); }
+        10% { transform: skewX(-25deg); }
+        15% { transform: skewX(25deg); }
+        20% { transform: skewX(0deg); }
+        100% { transform: skewX(0deg); }  
+      }
     </style>
 	</head>
   
@@ -52,18 +65,25 @@
     <div id="main" class="container" style="background-color: #fff">
       <div class="center">
 				<p id="nw-lyric" class="lyric" style="color: #000">nothing works</p>
+        <input type="text" id="nw-input" size="16" autocomplete="on" style="display: block">
         <p class="lyric" style="display: none;">nothing works for everyone</p>
         <p class="lyric" style="display: none;">good stories are bad lives</p>
-        <p class="lyric" style="display: none;">good stories are bad liveeeessss</p>
-				<input type="text" id="nw-input" size="16" autocomplete="on" display="block">
+        <p class="lyric" style="display: none;">good stories are bad lives...</p>
+        <p class="lyric chorus" style="display: none;">take your hands off your neck and</p>
+				<p class="lyric chorus" style="display: none;">hold onto the ghost of my body</p>
+        <p class="lyric chorus" style="display: none;">you know that good lives make bad stories</p>
+        <p class="lyric chorus" style="display: none;">you can text me!</p>
+        <p class="lyric chorus" style="display: none;">when punching matresses get old</p>
+        <p class="lyric chorus" style="display: none;">don't think it'll always be this way</p>
+        <p class="lyric chorus" style="display: none;">not comforted by anything you say</p>
+        <p class="lyric chorus" style="display: none;">we were wrecks before we crashed into each other</p>
+				<input type="text" id="www-input" size="56" autocomplete="on" style="display: none">
       </div>
     </div>	
 	</body>
   
   <script>
-    // make the lyrics all in the center
-    // make the fadeout shorter at the end -> use timeout in fadeOut function for the animate classes?, or edit animate keyframes
-    // add blank lyrics lines for silence preiods
+    // make lyrics appear randomly
     
   	let main = document.getElementById("main")
     let nwInput = document.getElementById("nw-input")
@@ -74,6 +94,7 @@
       lyric.style.display = "block"
       lyric.classList.add("animate__animated")
       lyric.classList.add("animate__fadeOut")
+      setTimeout(function() {lyric.style.display = "none"}, 4000)
     }
     
     function nothingWorks() {
@@ -82,7 +103,7 @@
       nwInput.style.display = "none"
       fadeOut(nwLyric)
       for (let i = 1; i < lyrics.length; i++) {
-        setTimeout(fadeOut, i * 3500, lyrics.item(i))
+        setTimeout(fadeOut, i * 3900, lyrics.item(i))
       }
     }
     
