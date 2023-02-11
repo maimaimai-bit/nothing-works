@@ -116,47 +116,84 @@
       return img
     }
     
+    function animateRain() {
+      for ()
+    }
+    
+    let manW = 60
+    let manH = manW * 4 / 3
     let man1 = createImg("man-1-invert.png")
-    man1.style.width = 60 + "px"
+    man1.style.width = manW + "px"
     man1.style.top = 0 + "px"
     man1.style.left = 0 + "px"
     
     let man2 = createImg("man-2-invert.png")
-    man2.style.width = 60 + "px"
-    man2.style.top = window.innerHeight - 80 
-    man2.style.left = window.innerWidth - 60
+    man2.style.width = manW + "px"
+    man2.style.top = window.innerHeight - manH 
+    man2.style.left = window.innerWidth - manW
     
-    let vx = 1
-    let vy = 1
+    let vx1 = 1
+    let vy1 = 1
     
-    let x = 0
-    let y = 0
+    let vx2 = 1
+    let vy2 = 1
+    
+    let x1 = 0
+    let y1 = 0
     
     function animateMan1() {
       requestAnimationFrame(animateMan1) 
       
       let topScrn = 0
-      let bottomScrn = window.innerHeight - 80
+      let bottomScrn = window.innerHeight - manH
       
       let leftScrn = 0
-      let rightScrn = window.innerWidth / 2 - 60
+      let rightScrn = window.innerWidth / 2 - manW - 10
       
-      if (x < leftScrn || x > rightScrn) {
-        vx = -vx
+      if (x1 < leftScrn || x1 > rightScrn) {
+        vx1 = -vx1
       }
       
-      if (y < topScrn || y > bottomScrn) { 
-        vy = -vy
+      if (y1 < topScrn || y1 > bottomScrn) { 
+        vy1 = -vy1
       } 
       
-      x += vx
-      y += vy
+      x1 += vx1
+      y1 += vy1
       
-      man1.style.left = x + "px"
-      man1.style.top = y + "px"
+      man1.style.left = x1 + "px"
+      man1.style.top = y1 + "px"
     }
     
-    animateMan1()
+    let x2 = window.innerWidth - manW
+    let y2 = window.innerHeight - manH
+    
+    function animateMan2() {
+      requestAnimationFrame(animateMan2) 
+      
+      let topScrn = 0
+      let bottomScrn = window.innerHeight - manH
+      
+      let leftScrn = window.innerWidth / 2 - manW + 10
+      let rightScrn = window.innerWidth - manW
+      
+      if (x2 < leftScrn || x2 > rightScrn) {
+        vx2 = -vx2
+      }
+      
+      if (y2 < topScrn || y2 > bottomScrn) { 
+        vy2 = -vy2
+      } 
+      
+      x2 += vx2
+      y2 += vy2
+      
+      man2.style.left = x2 + "px"
+      man2.style.top = y2 + "px"
+    }
+    
+    // animateMan1()
+    // animateMan2()
     
     window.addEventListener("keypress", function(event) {
       if (event.keyCode === 13 && nwInput.value.toLowerCase() === "nothing works") {
