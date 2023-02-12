@@ -8,8 +8,12 @@
       @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital@1&display=swap');
       @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital@1&family=Lato:wght@300;400&display=swap');
       
+      #nw-lyric.animate__animated.animate__fadeOut {
+        --animate-duration: 1.9s;
+      }
+      
       .animate__animated.animate__fadeOut {
-        --animate-duration: 2.9s;
+        --animate-duration: 3.9s;
       }
       
       .container {
@@ -100,8 +104,8 @@
     
     function fadeOut(lyric, timeout) {
       lyric.style.display = "block"
-      // lyric.classList.add("animate__animated")
-      // lyric.classList.add("animate__fadeOut")
+      lyric.classList.add("animate__animated")
+      lyric.classList.add("animate__fadeOut")
       setTimeout(function() {lyric.style.display = "none"}, timeout)
     }
     
