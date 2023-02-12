@@ -134,7 +134,7 @@
       gif.style.zIndex = z
     }
     
-    // animateStars
+    // animateStar
      
     function animateStar() {
       for (let r = 0; r < window.innerHeight / 150; r++) {
@@ -176,9 +176,9 @@
     
     let manW = 60
     let manH = manW * 4 / 3
-    let man1 = createImg("man-1-invert.png", manW, 0, 0, 0)
+    let man1 = createImg("man-1.png", manW, 0, 0, 0)
     
-    let man2 = createImg("man-2-invert.png", manW, window.innerWidth - manW, window.innerHeight - manH, 0)
+    let man2 = createImg("man-2.png", manW, window.innerWidth - manW, window.innerHeight - manH, 0)
     
     let vx1 = 1
     let vy1 = 1
@@ -196,7 +196,7 @@
       let bottomScrn = window.innerHeight - manH
       
       let leftScrn = 0
-      let rightScrn = window.innerWidth / 2 - manW - 5
+      let rightScrn = window.innerWidth / 2 - manW - 10
       
       if (x1 < leftScrn || x1 > rightScrn) {
         vx1 = -vx1
@@ -222,7 +222,7 @@
       let topScrn = 0
       let bottomScrn = window.innerHeight - manH
       
-      let leftScrn = window.innerWidth / 2 - manW + (manW + 5)
+      let leftScrn = window.innerWidth / 2 - manW + (manW + 10)
       let rightScrn = window.innerWidth - manW
       
       if (x2 < leftScrn || x2 > rightScrn) {
