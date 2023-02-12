@@ -63,7 +63,7 @@
   
 	<body>
     <div id="bg" class="container"></div>
-    <div id="main" class="container" style="background-color: #fff">
+    <div id="main" class="container" style="background-color: #000">
       <div class="center">
 				<p id="nw-lyric" class="lyric" style="color: #000">nothing works</p>
         <input type="text" id="nw-input" size="16" autocomplete="on" style="display: block">
@@ -109,11 +109,16 @@
       }
     }
     
-    function createImg(name, z) {
+    // helper functions
+    
+    function createImg(name, width, x, y, z) {
       let img = document.createElement("img")
       img.src = name
       main.appendChild(img)
       img.style.position = "absolute"
+      img.style.width = width
+      img.style.left = x
+      img. style.top = y
       img.style.zIndex = z 
       return img
     }
@@ -128,6 +133,27 @@
       gif.style.top = y + "px"
       gif.style.zIndex = z
     }
+    
+    // animateStars
+     
+    function animateStar() {
+      for (let r = 0; r < window.innerHeight / 150; r++) {
+        for (let c = 0; c < window.innerWidth / 150; c++) {
+          const x = c * 150;
+          const y = r * 120;
+          createImg("star.gif", 100, x, y, 0)
+        }
+      }
+      for (let i = 0; i < 60; i++) {
+        let x = Math.random() * window.innerWidth
+        let y = Math.random() * window.innerHeight
+        createImg("star.gif", 100, x, y, 0)
+      }
+    }
+    
+    animateStar()
+    
+    // animateRain
     
     function createRain() {
       for (let i = 0; i < 100; i++) {
@@ -144,19 +170,15 @@
       }
     }
     
-    animateRain()
+    // animateRain()
+    
+    // animateMan
     
     let manW = 60
     let manH = manW * 4 / 3
-    let man1 = createImg("man-1-invert.png")
-    man1.style.width = manW + "px"
-    man1.style.top = 0 + "px"
-    man1.style.left = 0 + "px"
+    let man1 = createImg("man-1-invert.png", manW, 0, 0, 0)
     
-    let man2 = createImg("man-2-invert.png")
-    man2.style.width = manW + "px"
-    man2.style.top = window.innerHeight - manH 
-    man2.style.left = window.innerWidth - manW
+    let man2 = createImg("man-2-invert.png", manW, window.innerWidth - manW, window.innerHeight - manH, 0)
     
     let vx1 = 1
     let vy1 = 1
@@ -174,7 +196,7 @@
       let bottomScrn = window.innerHeight - manH
       
       let leftScrn = 0
-      let rightScrn = window.innerWidth / 2 - manW - 10
+      let rightScrn = window.innerWidth / 2 - manW - 5
       
       if (x1 < leftScrn || x1 > rightScrn) {
         vx1 = -vx1
@@ -200,13 +222,13 @@
       let topScrn = 0
       let bottomScrn = window.innerHeight - manH
       
-      let leftScrn = window.innerWidth / 2 - manW + 10
+      let leftScrn = window.innerWidth / 2 - manW + (manW + 5)
       let rightScrn = window.innerWidth - manW
       
       if (x2 < leftScrn || x2 > rightScrn) {
         vx2 = -vx2
       }
-      
+       
       if (y2 < topScrn || y2 > bottomScrn) { 
         vy2 = -vy2
       } 
@@ -218,8 +240,8 @@
       man2.style.top = y2 + "px"
     }
     
-    // animateMan1()
-    // animateMan2()
+    animateMan1()
+    animateMan2()
     
     window.addEventListener("keypress", function(event) {
       if (event.keyCode === 13 && nwInput.value.toLowerCase() === "nothing works") {
