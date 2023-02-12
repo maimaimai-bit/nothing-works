@@ -9,7 +9,7 @@
       @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital@1&family=Lato:wght@300;400&display=swap');
       
       .animate__animated.animate__fadeOut {
-        --animate-duration: 3.9s;
+        --animate-duration: 2.9s;
       }
       
       .container {
@@ -79,7 +79,7 @@
         <p class="lyric chorus" style="display: none;">you can text me!</p>
         <p class="lyric chorus" style="display: none;">when punching matresses get old</p>
         <p class="lyric chorus" style="display: none;">don't think it'll always be this way</p>
-        <p class="lyric chorus" style="display: none;">not comforted by anything you say</p>
+        <p class="lyric chorus" style="display: none;">not comforted by anything I say</p>
 				<input type="text" id="www-input" size="56" autocomplete="on" style="display: none">
       </div>
     </div>	
@@ -98,22 +98,29 @@
     let nwLyric = document.getElementById("nw-lyric")
     let lyrics = document.getElementsByClassName("lyric")
     
-    function fadeOut(lyric) {
+    function fadeOut(lyric, timeout) {
       lyric.style.display = "block"
-      lyric.classList.add("animate__animated")
-      lyric.classList.add("animate__fadeOut")
-      setTimeout(function() {lyric.style.display = "none"}, 3900)
+      // lyric.classList.add("animate__animated")
+      // lyric.classList.add("animate__fadeOut")
+      setTimeout(function() {lyric.style.display = "none"}, timeout)
     }
     
     function nothingWorks() {
       clip1.play()
-      main.style.backgroundColor = "#000"
+      main.style.backgroundColor = "#000" 
       nwLyric.style.color = "#fff"
       nwInput.style.display = "none"
-      fadeOut(nwLyric)
-      for (let i = 1; i < lyrics.length; i++) {
-        setTimeout(fadeOut, i * 4000, lyrics.item(i))
-      }
+      setTimeout(fadeOut, 1000, lyrics.item(0), 2000)
+      setTimeout(fadeOut, 3500, lyrics.item(1), 3900) 
+      setTimeout(fadeOut, 7500, lyrics.item(2), 3900)
+      setTimeout(fadeOut, 11500, lyrics.item(3), 4500)
+      setTimeout(fadeOut, 17500, lyrics.item(4), 1900)
+      setTimeout(fadeOut, 19500, lyrics.item(5), 3400)
+      setTimeout(fadeOut, 23000, lyrics.item(6), 4400)
+      setTimeout(fadeOut, 28000, lyrics.item(7), 1900)
+      setTimeout(fadeOut, 30000, lyrics.item(8), 1900)
+      setTimeout(fadeOut, 32000, lyrics.item(9), 4400)
+      setTimeout(fadeOut, 36500, lyrics.item(10), 3900)
     }
     
     // helper functions
