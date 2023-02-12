@@ -126,15 +126,15 @@
         for (let c = 0; c < window.innerWidth / 150; c++) {
           const x = c * 150;
           const y = r * 120;
-          createGif("star.gif", 100, x, y, -1)
+          createGif("star.gif", 100, x, y, 1)
         }
       }
       for (let i = 0; i < 60; i++) {
         let x = Math.random() * window.innerWidth
         let y = Math.random() * window.innerHeight
-        createGif("star.gif", 100, x, y, -1)
+        createGif("star.gif", 100, x, y, 1)
       }
-      setTimeout(function() {bg.innerHTML = ""}, 12400)
+      setTimeout(function() {bg.innerHTML = ""}, 11900)
     }
     
     // animateRain
@@ -148,7 +148,7 @@
     }
     
     function animateRain() {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 11; i++) {
         setTimeout(createRain, i * 1000)
       }
     }
@@ -156,8 +156,8 @@
     // animateMan    
     let manW = 60
     let manH = manW * 4 / 3
-    let man1 = createImg("man-1.png", manW, 0, 0, 0)
-    let man2 = createImg("man-2.png", manW, window.innerWidth - manW, window.innerHeight - manH, 0) 
+    let man1 = createImg("man-1.png", manW, 0, 0, 1)
+    let man2 = createImg("man-2.png", manW, window.innerWidth - manW, window.innerHeight - manH, 1) 
     
     let x1 = 0
     let y1 = 0
