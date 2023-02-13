@@ -16,7 +16,7 @@
         --animate-duration: 3.9s;
       }
       
-    	.animate__animated.animate__shakeX {
+    	.animate__animated.animate__flash {
         --animate-duration: 4.9s;
       }
       
@@ -67,8 +67,10 @@
         100% { transform: skewX(0deg) }  
       }
       
-      .end {
-        animation: glitch 1s linear infinite;
+      #star-bg {
+        width: 100%;
+        height: 100%;
+        position: relative;
       }
     </style>
 	</head>
@@ -97,7 +99,7 @@
         <p class="lyric chorus" style="display: none">not comforted by anything I say</p>
         <p id="www-lyric" class="lyric" style="display: none">"we were wrecks before we crashed into each other"</p>
 				<input type="text" id="www-input" size="56" autocomplete="on" style="display: none">
-        <p id="dw-lyric" class="lyric animate__animated animate__shakeX" style="display: none">don't worry... you and me won't be alone no more.</p>
+        <p id="dw-lyric" class="lyric animate__animated animate__flash" style="display: none">don't worry... you and me won't be alone no more.</p>
       </div>
     </div>	
 	</body>
@@ -163,16 +165,13 @@
     }
 
     // animateStar
-    let starBg = document.getElementById("star-bg")
+    // let starBg = document.getElementById("star-bg")
     
     function animateStar() {
-      bg.style.display = "block"
-      starBg.style.display = "block"
-      starBg.style.height = "100%"
-      starBg.style.position = "absolute"
-      starBg.style.top = "0px"
-      starBg.style.zIndex = "1"
-      createGif("star-bg.gif", window.inner)
+      // bg.style.display = "block"
+      // starBg.style.display = "block"
+      // starBg.style.zIndex = "1"
+      
       for (let r = 0; r < window.innerHeight / 160; r++) {
         for (let c = 0; c < window.innerWidth / 180; c++) {
           const y = r * 160;
@@ -186,8 +185,6 @@
         createGif("star.gif", 100, x, y, 1)
       }
     }
-    
-    // animateStar()
     
     // animateMan    
     let manW = 60
@@ -264,12 +261,13 @@
     let dwLyric = document.getElementById("dw-lyric")
     
     function wereWrecks() {
-      clip2.play()  
+      clip2.play()
+      animateStar() 
       
       wwwInput.style.display = "none"
       wwwLyric.innerText = "we were wrecks before we crashed into each other"
       wwwLyric.classList.add("animate__animated")
-      wwwLyric.classList.add("animate__shakeX")
+      wwwLyric.classList.add("animate__flash")
       
       setTimeout(function() {wwwLyric.style.display = "none"}, 4900)
       setTimeout(function() {dwLyric.style.display = "block"}, 18000)
@@ -277,6 +275,8 @@
     }
     
     function final() {
+      man1.style.display = "none"
+      man2.style.display = "none"
       wwwLyric.style.display = "block"
       wwwInput.style.display = "block"
       
