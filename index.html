@@ -261,6 +261,8 @@
     let dwLyric = document.getElementById("dw-lyric")
     
     function wereWrecks() {
+      createImg("2-men.png", 100, window.innerWidth - 100, window.innerHeight - 125, 1)
+      
       clip2.play()
       animateStar() 
       
@@ -274,6 +276,7 @@
       setTimeout(function() {dwLyric.style.display = "none"}, 34000)
     }
     
+    wereWrecks()
     function final() {
       man1.style.display = "none"
       man2.style.display = "none"
