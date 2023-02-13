@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en-US">
-	<head>
-		<meta charset="utf-8">
-		<title>Nothing Works</title>
+  <head>
+    <meta charset="utf-8">
+    <title>Nothing Works</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital@1&family=Lato:wght@300;400&display=swap');
-      
+
       #nw-lyric.animate__animated.animate__fadeOut {
         --animate-duration: 2.4s;
       }
-      
+
       .animate__animated.animate__fadeOut {
         --animate-duration: 3.9s;
       }
-      
-    	.animate__animated.animate__flash {
+
+      .animate__animated.animate__flash {
         --animate-duration: 4.9s;
       }
-      
+
       .container {
         position: absolute;
         top: 0;
@@ -27,18 +27,18 @@
         width: 100%;
         display: grid;
       }
-      
+
       .center {
         margin: auto;
       }
-      
+
       .lyric {
         font-family: "Alegreya";
         font-size: 17px;
         text-align: center;
         color: #fff;
       }
-      
+
       #main input {
         margin-top: -10px;
         margin-bottom: 45px;
@@ -46,13 +46,13 @@
         padding: 2px 4px;
         text-transform: uppercase;
       }
-      
+
       #main input:focus {
         outline: none !important;
         border-radius: 3px;
         border: 1.5px solid #dedede;
       }
-      
+
       .chorus {
         animation: .1s shake 39 alternate;
       }
@@ -63,73 +63,73 @@
         10% { transform: skewX(-25deg) }
         15% { transform: skewX(25deg) }
         20% { transform: skewX(0deg) }
-        100% { transform: skewX(0deg) }  
+        100% { transform: skewX(0deg) }
       }
-      
+
       #star-bg {
         width: 100%;
         height: 100%;
         position: relative;
       }
-      
+
       #www-lyric, #dw-lyric {
         position: relative;
         z-index: 2;
       }
     </style>
-	</head>
-  
-	<body>
+  </head>
+
+  <body>
     <audio id="clip-1" src="clip-1.mp3"></audio>
     <audio id="clip-2" src="clip-2.mp3"></audio>
-    
+
     <div id="star-div" class="container">
       <img id="star-bg" src="star-bg.gif" style="display:none">
     </div>
-    
+
     <div id="bg" class="container"></div>
-    
+
     <div id="main" class="container" style="background-color: #fff">
       <div class="center">
-				<p id="nw-lyric" class="lyric" style="color: #000; display: block">"nothing works"</p>
-        <input type="text" id="nw-input" size="16" autocomplete="on" style="display: block">
+        <p id="nw-lyric" class="lyric" style="color: #000; display: block">"nothing works"</p>
+        <input type="text" id="nw-input" size="16" autocomplete="off" style="display: block">
         <p class="lyric" style="display: none">nothing works for everyone</p>
         <p class="lyric" style="display: none">good stories are bad lives</p>
         <p class="lyric" style="display: none">good stories are bad lives...</p>
         <p class="lyric chorus" style="display: none">take your hands off your neck and</p>
-				<p class="lyric chorus" style="display: none">hold onto the ghost of my body</p>
+        <p class="lyric chorus" style="display: none">hold onto the ghost of my body</p>
         <p class="lyric chorus" style="display: none">you know that good lives make bad stories</p>
         <p class="lyric chorus" style="display: none">you can text me!</p>
         <p class="lyric chorus" style="display: none">when punching matresses get old</p>
         <p class="lyric chorus" style="display: none">don't think it'll always be this way</p>
         <p class="lyric chorus" style="display: none">not comforted by anything I say</p>
         <p id="www-lyric" class="lyric" style="display: none">"we were wrecks before we crashed into each other"</p>
-				<input type="text" id="www-input" size="56" autocomplete="on" style="display: none">
+        <input type="text" id="www-input" size="56" autocomplete="off" style="display: none">
         <p id="dw-lyric" class="lyric animate__animated animate__flash" style="display: none">don't worry... you and me won't be alone no more.</p>
       </div>
-    </div>	
-	</body>
-  
-  <script>  
+    </div>
+  </body>
+
+  <script>
     let clip1 = document.getElementById("clip-1")
     let clip2 = document.getElementById("clip-2")
-    
+
     let bg = document.getElementById("bg")
-  	let main = document.getElementById("main")
-    
+    let main = document.getElementById("main")
+
     // helper functions
     function createImg(name, width, x, y, z) {
       let img = document.createElement("img")
       img.src = name
-      img.style.position = "absolute"
       img.style.width = width
+      img.style.position = "absolute"
       img.style.left = x
       img.style.top = y
-      img.style.zIndex = z 
+      img.style.zIndex = z
       main.appendChild(img)
       return img
     }
-    
+
     function createGif(name, width, x, y, z) {
       const gif = document.createElement("img")
       gif.src = name
@@ -140,10 +140,10 @@
       gif.style.zIndex = z
       bg.appendChild(gif)
     }
-    
+
     // animateSnow
     function animateSnow() {
-      main.style.backgroundColor = "#000" 
+      main.style.backgroundColor = "#000"
       for (let r = 0; r < window.innerHeight / 400; r++) {
         for (let c = 0; c < window.innerWidth / 400; c++) {
           const y = r * 400;
@@ -151,9 +151,9 @@
           createGif("snow.gif", 400, x, y, 1)
         }
       }
-      setTimeout(function() {bg.innerHTML = ""}, 11900)
+      setTimeout(function() { bg.innerHTML = "" }, 11900)
     }
-    
+
     // animateRain
     function createRain() {
       for (let i = 0; i < 100; i++) {
@@ -161,81 +161,83 @@
         let y = Math.random() * (window.innerHeight) - 150
         createGif("rain.gif", 300, x, y, 1)
       }
-      setTimeout(function() {bg.innerHTML = ""}, 900)
+      setTimeout(function() { bg.innerHTML = "" }, 900)
     }
-    
+
     function animateRain() {
       for (let i = 0; i < 10; i++) {
         setTimeout(createRain, i * 1000)
       }
     }
-    
+
     // animateMan    
     let manW = 60
     let manH = manW * 4 / 3
-    
+
     let man1 = createImg("man-1.png", manW, 0, 0, 1)
+    man1.style.width = manW
     man1.style.display = "none"
-    
-    let man2 = createImg("man-2.png", manW, window.innerWidth - manW, window.innerHeight - manH, 1) 
+
+    let man2 = createImg("man-2.png", manW, window.innerWidth - manW, window.innerHeight - manH, 1)
+    man2.style.width = manW
     man2.style.display = "none"
-    
+
     let x1 = 0
     let y1 = 0
     let vx1 = 1
-    let vy1 = 1 
-    
+    let vy1 = 1
+
     function animateMan1() {
-      requestAnimationFrame(animateMan1) 
-      
+      requestAnimationFrame(animateMan1)
+
       let topScrn = 0
       let bottomScrn = window.innerHeight - manH
       let leftScrn = 0
       let rightScrn = window.innerWidth / 2 - manW - 10
-      
+
       if (x1 < leftScrn || x1 > rightScrn) {
         vx1 = -vx1
-      }     
-      if (y1 < topScrn || y1 > bottomScrn) { 
+      }
+      if (y1 < topScrn || y1 > bottomScrn) {
         vy1 = -vy1
-      } 
-      
+      }
+
       x1 += vx1
       y1 += vy1
-      
+
       man1.style.left = x1 + "px"
       man1.style.top = y1 + "px"
     }
-    
+
     let x2 = window.innerWidth - manW
     let y2 = window.innerHeight - manH
     let vx2 = 1
     let vy2 = 1
-    
+
     function animateMan2() {
-      requestAnimationFrame(animateMan2) 
-      
+      requestAnimationFrame(animateMan2)
+
       let topScrn = 0
-      let bottomScrn = window.innerHeight - manH     
+      let bottomScrn = window.innerHeight - manH
       let leftScrn = window.innerWidth / 2 - manW + (manW + 10)
       let rightScrn = window.innerWidth - manW
-      
+
       if (x2 < leftScrn || x2 > rightScrn) {
         vx2 = -vx2
-      }     
-      if (y2 < topScrn || y2 > bottomScrn) { 
+      }
+      if (y2 < topScrn || y2 > bottomScrn) {
         vy2 = -vy2
-      } 
-      
+      }
+
       x2 += vx2
       y2 += vy2
-      
+
       man2.style.left = x2 + "px"
       man2.style.top = y2 + "px"
     }
-    
+
     // animateStar
-    
+
     function createGifCircle(num, scale, radius) {
       for (let i = 0; i < num; i++) {
         const x = (window.innerWidth / 2 - 50) + Math.sin(i * scale) * radius
@@ -243,108 +245,111 @@
         createGif("star.gif", 100, x, y, 1)
       }
     }
-    
+
     function animateStar() {
       let starDiv = document.getElementById("star-div")
-    	let starBg = document.getElementById("star-bg")
+      let starBg = document.getElementById("star-bg")
       starDiv.style.zIndex = "1"
       starBg.style.display = "block"
-      
+
       createGifCircle(3, 1.6, 50)
       createGifCircle(12, 0.52, 150)
-      createGifCircle(16, 0.4, 250) 
+      createGifCircle(16, 0.4, 250)
       createGifCircle(21, 0.3, 350)
       createGifCircle(26, 0.25, 450)
-      
-//       for (let r = 0; r < window.innerHeight / 160; r++) {
-//         for (let c = 0; c < window.innerWidth / 180; c++) {
-//           const y = r * 160;
-//           const x = c * 180;
-//           createGif("star.gif", 100, x, y, 1)
-//         }
-//       }
-//       for (let i = 0; i < 80; i++) {
-//         let x = Math.random() * window.innerWidth
-//         let y = Math.random() * window.innerHeight
-//         createGif("star.gif", 100, x, y, 1)
-//       }
+
+      //       for (let r = 0; r < window.innerHeight / 160; r++) {
+      //         for (let c = 0; c < window.innerWidth / 180; c++) {
+      //           const y = r * 160;
+      //           const x = c * 180;
+      //           createGif("star.gif", 100, x, y, 1)
+      //         }
+      //       }
+      //       for (let i = 0; i < 80; i++) {
+      //         let x = Math.random() * window.innerWidth
+      //         let y = Math.random() * window.innerHeight
+      //         createGif("star.gif", 100, x, y, 1)
+      //       }
     }
 
     // ending setup
-    
+
     let wwwInput = document.getElementById("www-input")
     let wwwLyric = document.getElementById("www-lyric")
     let dwLyric = document.getElementById("dw-lyric")
-    
+
     function wereWrecks() {
-      createImg("2-men.png", 90, window.innerWidth / 2 - 45, window.innerHeight / 2 - 130, 1)
+      let men = createImg("2-men.png", 90, window.innerWidth / 2 - 45, window.innerHeight / 2 - 130, 1)
+			men.style.width = 90
       
       clip2.play()
-      animateStar() 
-      
+      animateStar()
+
       wwwInput.style.display = "none"
       wwwLyric.innerText = "we were wrecks before we crashed into each other"
       wwwLyric.classList.add("animate__animated")
       wwwLyric.classList.add("animate__flash")
-      
-      setTimeout(function() {wwwLyric.style.display = "none"}, 4900)
-      setTimeout(function() {dwLyric.style.display = "block"}, 18000)
-      setTimeout(function() {dwLyric.style.display = "none"}, 34000)
+
+      setTimeout(function() { wwwLyric.style.display = "none" }, 4900)
+      setTimeout(function() { dwLyric.style.display = "block" }, 18000)
+      setTimeout(function() { dwLyric.style.display = "none" }, 34000)
     }
-    
+
     function final() {
       man1.style.display = "none"
       man2.style.display = "none"
       wwwLyric.style.display = "block"
       wwwInput.style.display = "block"
-      
+
       window.addEventListener("keypress", function(event) {
-      	if (event.keyCode === 13 && wwwInput.value.toLowerCase() === "we were wrecks before we crashed into each other") {
-        	wereWrecks()
-      	}
-    	})
+        if (event.keyCode === 13 && wwwInput.value.toLowerCase() === "we were wrecks before we crashed into each other") {
+          wereWrecks()
+        }
+      })
     }
-    
+
     // main function nothingWorks
-    
+
     let nwInput = document.getElementById("nw-input")
     let nwLyric = document.getElementById("nw-lyric")
     let lyrics = document.getElementsByClassName("lyric")
-    
+
     function fadeOut(lyric, timeout) {
       lyric.style.display = "block"
       lyric.classList.add("animate__animated")
       lyric.classList.add("animate__fadeOut")
-      setTimeout(function() {lyric.style.display = "none"}, timeout)
+      setTimeout(function() {
+        lyric.style.display = "none"
+      }, timeout)
     }
-    
+
     function nothingWorks() {
       clip1.play()
-      main.style.backgroundColor = "#000" 
-      
+      main.style.backgroundColor = "#000"
+
       nwLyric.style.display = "none"
       nwLyric.innerText = "nothing works"
       nwLyric.style.color = "#fff"
       nwInput.style.display = "none"
-      
+
       man1.style.display = "block"
       man2.style.display = "block"
       animateMan1()
-    	animateMan2()
-      
+      animateMan2()
+
       // verse
       setTimeout(fadeOut, 1000, lyrics.item(0), 2400)
-      setTimeout(fadeOut, 3500, lyrics.item(1), 3900) 
+      setTimeout(fadeOut, 3500, lyrics.item(1), 3900)
       setTimeout(fadeOut, 7500, lyrics.item(2), 3900)
       setTimeout(fadeOut, 11500, lyrics.item(3), 4500)
-      
+
       // chorus 1
       setTimeout(animateSnow, 17500)
       setTimeout(fadeOut, 17500, lyrics.item(4), 1900)
       setTimeout(fadeOut, 19500, lyrics.item(5), 3400)
       setTimeout(fadeOut, 23000, lyrics.item(6), 4400)
       setTimeout(fadeOut, 28000, lyrics.item(7), 1900)
-      
+
       // chorus 2
       setTimeout(animateRain, 30000)
       setTimeout(fadeOut, 30000, lyrics.item(8), 1900)
