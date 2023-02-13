@@ -121,7 +121,7 @@
     function createImg(name, width, x, y, z) {
       let img = document.createElement("img")
       img.src = name
-      img.style.width = width
+      img.width = width
       img.style.position = "absolute"
       img.style.left = x
       img.style.top = y
@@ -175,11 +175,9 @@
     let manH = manW * 4 / 3
 
     let man1 = createImg("man-1.png", manW, 0, 0, 1)
-    man1.style.width = manW
     man1.style.display = "none"
 
     let man2 = createImg("man-2.png", manW, window.innerWidth - manW, window.innerHeight - manH, 1)
-    man2.style.width = manW
     man2.style.display = "none"
 
     let x1 = 0
@@ -270,6 +268,7 @@
       //         let y = Math.random() * window.innerHeight
       //         createGif("star.gif", 100, x, y, 1)
       //       }
+      
     }
 
     // ending setup
@@ -279,8 +278,7 @@
     let dwLyric = document.getElementById("dw-lyric")
 
     function wereWrecks() {
-      let men = createImg("2-men.png", 90, window.innerWidth / 2 - 45, window.innerHeight / 2 - 130, 1)
-			men.style.width = 90
+      createImg("2-men.png", 90, window.innerWidth / 2 - 45, window.innerHeight / 2 - 130, 1)
       
       clip2.play()
       animateStar()
