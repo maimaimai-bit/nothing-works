@@ -77,7 +77,11 @@
     <audio id="clip-1" src="clip-1.mp3"></audio>
     <audio id="clip-2" src="clip-2.mp3"></audio>
     
-    <div id="bg" class="container"></div>
+    <div id="bg" class="container">
+      <img id="star-bg" src="star-bg.gif" style="display:none">
+      <iframe width="100%" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
     <div id="main" class="container" style="background-color: #fff">
       <div class="center">
 				<p id="nw-lyric" class="lyric" style="color: #000; display: block">"nothing works"</p>
@@ -130,19 +134,15 @@
       gif.style.zIndex = z
     }
     
-    // animateStar
-    function animateStar() {
-      for (let r = 0; r < window.innerHeight / 160; r++) {
-        for (let c = 0; c < window.innerWidth / 180; c++) {
-          const y = r * 160;
-          const x = c * 180;
-          createGif("star.gif", 100, x, y, 1)
+    // animateSnow
+    function animateSnow() {
+      main.style.backgroundColor = "#000" 
+      for (let r = 0; r < window.innerHeight / 400; r++) {
+        for (let c = 0; c < window.innerWidth / 400; c++) {
+          const y = r * 400;
+          const x = c * 400;
+          createGif("snow02.gif", 400, x, y, 1)
         }
-      }
-      for (let i = 0; i < 80; i++) {
-        let x = Math.random() * window.innerWidth
-        let y = Math.random() * window.innerHeight
-        createGif("star.gif", 100, x, y, 1)
       }
       setTimeout(function() {bg.innerHTML = ""}, 11900)
     }
@@ -162,6 +162,33 @@
         setTimeout(createRain, i * 1000)
       }
     }
+
+    // animateStar
+    let starBg = document.getElementById("star-bg")
+    
+    function animateStar() {
+      bg.style.display = "block"
+      starBg.style.display = "block"
+      starBg.style.height = "100%"
+      starBg.style.position = "absolute"
+      starBg.style.top = "0px"
+      starBg.style.zIndex = "1"
+      createGif("star-bg.gif", window.inner)
+      for (let r = 0; r < window.innerHeight / 160; r++) {
+        for (let c = 0; c < window.innerWidth / 180; c++) {
+          const y = r * 160;
+          const x = c * 180;
+          createGif("star.gif", 100, x, y, 1)
+        }
+      }
+      for (let i = 0; i < 80; i++) {
+        let x = Math.random() * window.innerWidth
+        let y = Math.random() * window.innerHeight
+        createGif("star.gif", 100, x, y, 1)
+      }
+    }
+    
+    // animateStar()
     
     // animateMan    
     let manW = 60
@@ -295,7 +322,7 @@
       setTimeout(fadeOut, 11500, lyrics.item(3), 4500)
       
       // chorus 1
-      setTimeout(animateStar, 17500)
+      setTimeout(animateSnow, 17500)
       setTimeout(fadeOut, 17500, lyrics.item(4), 1900)
       setTimeout(fadeOut, 19500, lyrics.item(5), 3400)
       setTimeout(fadeOut, 23000, lyrics.item(6), 4400)
