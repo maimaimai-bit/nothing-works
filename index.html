@@ -236,25 +236,40 @@
     
     // animateStar
     
+    function createGifCircle(num, scale, radius) {
+      for (let i = 0; i < num; i++) {
+        const x = (window.innerWidth / 2 - 50) + Math.sin(i * scale) * radius
+        const y = (window.innerHeight / 2 - 50) + Math.cos(i * scale) * radius
+        createGif("star.gif", 100, x, y, 1)
+      }
+    }
+    
     function animateStar() {
       let starDiv = document.getElementById("star-div")
     	let starBg = document.getElementById("star-bg")
       starDiv.style.zIndex = "1"
       starBg.style.display = "block"
       
-      for (let r = 0; r < window.innerHeight / 160; r++) {
-        for (let c = 0; c < window.innerWidth / 180; c++) {
-          const y = r * 160;
-          const x = c * 180;
-          createGif("star.gif", 100, x, y, 1)
-        }
-      }
-      for (let i = 0; i < 80; i++) {
-        let x = Math.random() * window.innerWidth
-        let y = Math.random() * window.innerHeight
-        createGif("star.gif", 100, x, y, 1)
-      }
+      createGifCircle(12, 0.52, 150)
+      createGifCircle(16, 0.4, 250) 
+      createGifCircle(21, 0.3, 350)
+      createGifCircle(26, 0.25, 450)
+      
+//       for (let r = 0; r < window.innerHeight / 160; r++) {
+//         for (let c = 0; c < window.innerWidth / 180; c++) {
+//           const y = r * 160;
+//           const x = c * 180;
+//           createGif("star.gif", 100, x, y, 1)
+//         }
+//       }
+//       for (let i = 0; i < 80; i++) {
+//         let x = Math.random() * window.innerWidth
+//         let y = Math.random() * window.innerHeight
+//         createGif("star.gif", 100, x, y, 1)
+//       }
     }
+    
+    animateStar()
     
     // ending setup
     
