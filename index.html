@@ -16,6 +16,10 @@
         --animate-duration: 3.9s;
       }
       
+    	.animate__animated.animate__shakeX {
+        --animate-duration: 4.9s;
+      }
+      
       .container {
         position: absolute;
         top: 0;
@@ -55,12 +59,16 @@
       }
 
       @keyframes shake {
-        0% { transform: skewX(-25deg); }
-        5% { transform: skewX(25deg); }
-        10% { transform: skewX(-25deg); }
-        15% { transform: skewX(25deg); }
-        20% { transform: skewX(0deg); }
-        100% { transform: skewX(0deg); }  
+        0% { transform: skewX(-25deg) }
+        5% { transform: skewX(25deg) }
+        10% { transform: skewX(-25deg) }
+        15% { transform: skewX(25deg) }
+        20% { transform: skewX(0deg) }
+        100% { transform: skewX(0deg) }  
+      }
+      
+      .end {
+        animation: glitch 1s linear infinite;
       }
     </style>
 	</head>
@@ -86,6 +94,7 @@
         <p class="lyric chorus" style="display: none">not comforted by anything I say</p>
         <p id="www-lyric" class="lyric" style="display: none">"we were wrecks before we crashed into each other"</p>
 				<input type="text" id="www-input" size="56" autocomplete="on" style="display: none">
+        <p id="dw-lyric" class="lyric animate__animated animate__shakeX" style="display: none">don't worry... you and me won't be alone no more.</p>
       </div>
     </div>	
 	</body>
@@ -127,13 +136,13 @@
         for (let c = 0; c < window.innerWidth / 180; c++) {
           const y = r * 160;
           const x = c * 180;
-          createGif("snow02.gif", 100, x, y, 1)
+          createGif("star.gif", 100, x, y, 1)
         }
       }
       for (let i = 0; i < 80; i++) {
         let x = Math.random() * window.innerWidth
         let y = Math.random() * window.innerHeight
-        createGif("snow02.gif", 100, x, y, 1)
+        createGif("star.gif", 100, x, y, 1)
       }
       setTimeout(function() {bg.innerHTML = ""}, 11900)
     }
@@ -157,8 +166,12 @@
     // animateMan    
     let manW = 60
     let manH = manW * 4 / 3
+    
     let man1 = createImg("man-1.png", manW, 0, 0, 1)
+    man1.style.display = "none"
+    
     let man2 = createImg("man-2.png", manW, window.innerWidth - manW, window.innerHeight - manH, 1) 
+    man2.style.display = "none"
     
     let x1 = 0
     let y1 = 0
@@ -218,6 +231,36 @@
       man2.style.top = y2 + "px"
     }
     
+    // ending setup
+    
+    let wwwInput = document.getElementById("www-input")
+    let wwwLyric = document.getElementById("www-lyric")
+    let dwLyric = document.getElementById("dw-lyric")
+    
+    function wereWrecks() {
+      clip2.play()  
+      
+      wwwInput.style.display = "none"
+      wwwLyric.innerText = "we were wrecks before we crashed into each other"
+      wwwLyric.classList.add("animate__animated")
+      wwwLyric.classList.add("animate__shakeX")
+      
+      setTimeout(function() {wwwLyric.style.display = "none"}, 4900)
+      setTimeout(function() {dwLyric.style.display = "block"}, 18000)
+      setTimeout(function() {dwLyric.style.display = "none"}, 34000)
+    }
+    
+    function final() {
+      wwwLyric.style.display = "block"
+      wwwInput.style.display = "block"
+      
+      window.addEventListener("keypress", function(event) {
+      	if (event.keyCode === 13 && wwwInput.value.toLowerCase() === "we were wrecks before we crashed into each other") {
+        	wereWrecks()
+      	}
+    	})
+    }
+    
     // main function nothingWorks
     
     let nwInput = document.getElementById("nw-input")
@@ -240,6 +283,8 @@
       nwLyric.style.color = "#fff"
       nwInput.style.display = "none"
       
+      man1.style.display = "block"
+      man2.style.display = "block"
       animateMan1()
     	animateMan2()
       
@@ -261,33 +306,13 @@
       setTimeout(fadeOut, 30000, lyrics.item(8), 1900)
       setTimeout(fadeOut, 32000, lyrics.item(9), 4400)
       setTimeout(fadeOut, 36500, lyrics.item(10), 3900)
-    }
-    
-    let wwwLyric = document.getElementById("www-lyric")
-    let wwwInput = document.getElementById("www-input")
-    
-    function finalSetup() {
-      wwwLyric.style.display = "block"
-      wwwInput.style.display = "block"
-      
-      window.addEventListener("keypress", function(event) {
-      	if (event.keyCode === 13 && wwwInput.value.toLowerCase() === "we were wrecks before we crashed into each other") {
-        	wereWrecks()
-      	}
-    	})
-    }
-    
-    function wereWrecks() {
-      clip2.play()     
-      wwwLyric.style.display = "none"
-      wwwLyric.innerText = "we were wrecks before we crashed into each other"
-      nwLyric.style.color = "#fff"
-      nwInput.style.display = "none"
+      setTimeout(final, 40500)
     }
 
     window.addEventListener("keypress", function(event) {
       if (event.keyCode === 13 && nwInput.value.toLowerCase() === "nothing works") {
         nothingWorks()
+        nwInput.value = ""
       }
     })
     
