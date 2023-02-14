@@ -76,6 +76,32 @@
         position: relative;
         z-index: 2;
       }
+      
+      #creds {
+        z-index: 2;
+      }
+      
+      #creds p {
+        font-family: "Lato";
+        text-align: center;
+        font-size: 14.5px;
+        color: #fff;
+      }
+      
+      #to-him {
+        position: relative;
+        top: 48%;
+      }
+      
+      #credits {
+        font-weight: 300;
+        position: relative;
+        top: 60%;
+      }
+      
+      #creds a {
+        color: #fff;
+      }
     </style>
   </head>
 
@@ -84,7 +110,7 @@
     <audio id="clip-2" src="clip-2.mp3"></audio>
 
     <div id="star-div" class="container">
-      <img id="star-bg" src="star-bg.gif" style="display:none">
+      <img id="star-bg" src="star-bg.gif" style="display:none" alt="star background">
     </div>
 
     <div id="bg" class="container"></div>
@@ -107,6 +133,17 @@
         <input type="text" id="www-input" size="56" autocomplete="off" style="display: none">
         <p id="dw-lyric" class="lyric animate__animated animate__flash" style="display: none">don't worry... you and me won't be alone no more.</p>
       </div>
+    </div>
+    
+    <div id="creds" class="container" style="display: none">
+      <p id="to-him" class="animate__animated animate__fadeIn">made on 02/14/2023 &amp; dedicated to my beautiful boyfriend whom I love so much ☺</p>
+      <p id="credits" class="animate__animated animate__fadeIn">
+        ~ CREDITS ~ <br>
+        audio: <a href="https://www.youtube.com/watch?v=Ydv6usKn2rg">car seat headrest - "sober to death"</a> <br>
+        images of individual man: <a href="https://www.reddit.com/r/CSHFans/comments/nolcfr/not_sure_who_would_be_interested_in_this_but_i/">u/PrecognitiveMemes</a> <br>
+        image of two men hugging: <a href="https://en.wikipedia.org/wiki/Twin_Fantasy">"twin fantasy"'s album cover</a> <br>
+        zooming star background: <a href="https://www.youtube.com/watch?v=NtOwzU5Rpp8&t=0s">startgrid - "space flight loop"</a>
+      </p>
     </div>
   </body>
 
@@ -254,7 +291,7 @@
       createGifCircle(12, 0.52, 150)
       createGifCircle(16, 0.4, 250)
       createGifCircle(21, 0.3, 350)
-      createGifCircle(26, 0.25, 450)
+      // createGifCircle(26, 0.25, 450)
 
       //       for (let r = 0; r < window.innerHeight / 160; r++) {
       //         for (let c = 0; c < window.innerWidth / 180; c++) {
@@ -276,6 +313,7 @@
     let wwwInput = document.getElementById("www-input")
     let wwwLyric = document.getElementById("www-lyric")
     let dwLyric = document.getElementById("dw-lyric")
+    let creds = document.getElementById("creds")
 
     function wereWrecks() {
       createImg("2-men.png", 90, window.innerWidth / 2 - 45, window.innerHeight / 2 - 130, 1)
@@ -291,6 +329,7 @@
       setTimeout(function() { wwwLyric.style.display = "none" }, 4900)
       setTimeout(function() { dwLyric.style.display = "block" }, 18000)
       setTimeout(function() { dwLyric.style.display = "none" }, 34000)
+      setTimeout(function() { creds.style.display = "block" }, 38000)
     }
 
     function final() {
@@ -305,7 +344,9 @@
         }
       })
     }
-
+    
+    wereWrecks()
+  
     // main function nothingWorks
 
     let nwInput = document.getElementById("nw-input")
